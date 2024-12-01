@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Food Ordering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            text-align: center;
+        }
+        .profile {
+            margin-top: 20px;
+        }
+        .profile p {
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+        .order-history {
+            margin-top: 20px;
+        }
+        .order-history ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .order-history li {
+            padding: 10px;
+            background-color: #e9ecef;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .logout {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100px;
+        }
+        .logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Your Profile</h2>
+        <div class="profile">
+            <p id="userDetails"></p>
+            <p id="userAddress"></p>
+        </div>
+
+        <div class="order-history">
+            <h3>Order History</h3>
+            <ul id="orderList">
+                <!-- Orders will be displayed here -->
+            </ul>
+        </div>
+
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user) {
+            document.getElementById("userDetails").innerText = `Hello, ${user.username}! Your email is ${user.email}.`;
+            document.getElementById("userAddress").innerText = `Delivery Address: ${user.address}`;
+
+            // Display order history if it exists
+            const orderList = document.getElementById("orderList");
+            if (user.orders && user.orders.length > 0) {
+                user.orders.forEach(order => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${order.itemName} - $${order.price}`;
+                    orderList.appendChild(listItem);
+                });
+            } else {
+                orderList.innerHTML = "<li>No orders yet.</li>";
+            }
+        } else {
+            alert("No user logged in. Redirecting to login.");
+            window.location.href = "login.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("user");
+            alert("Logged out successfully!");
+            window.location.href = "/login page/sign.html";        
+        }
+    </script>
+</body>
+</html>

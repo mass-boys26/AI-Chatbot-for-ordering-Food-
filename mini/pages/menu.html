@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="menu.css" />
+  </head>
+  <body>
+    <section id="menu" class="section-p1">
+      <h2>Our Menu</h2>
+      <p>Discover Our Best Dishes</p>
+      <div class="menu-filters">
+        <button class="filter-btn active" onclick="filterMenu('all')">All</button>
+        <button class="filter-btn" onclick="filterMenu('appetizers')">Appetizers</button>
+        <button class="filter-btn" onclick="filterMenu('main')">Main Courses</button>
+        <button class="filter-btn" onclick="filterMenu('desserts')">Desserts</button>
+      </div>
+      <div class="menu-container">
+        <!-- Appetizers -->
+        <div class="menu-item appetizers">
+          <img src="/photes/img/appetizer.jpeg" alt="Spring Rolls" />
+          <h3>Spring Rolls</h3>
+          <p>Crunchy and delicious, served with dipping sauce.</p>
+          <span>&#8377;120</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item appetizers">
+          <img src="/photes/menu/samosas.jpeg" alt="Samosa" />
+          <h3>Samosa</h3>
+          <p>Crispy pastry filled with spiced potatoes and peas.</p>
+          <span>&#8377;80</span>
+          <button>Add to Cart</button>
+        </div>
+        <!-- Main Courses -->
+        <div class="menu-item main">
+          <img src="/photes/img/main_course.jpeg" alt="Grilled Chicken" />
+          <h3>Grilled Chicken</h3>
+          <p>Marinated with herbs and spices, served with veggies.</p>
+          <span>&#8377;250</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item main">
+          <img src="/photes/menu/butter.jpeg" alt="Butter Chicken" />
+          <h3>Butter Chicken</h3>
+          <p>Chicken cooked in creamy tomato sauce.</p>
+          <span>&#8377;300</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item main">
+          <img src="/photes/menu/panner.jpeg" alt="Paneer Tikka" />
+          <h3>Paneer Tikka</h3>
+          <p>Grilled cubes of marinated paneer served with chutney.</p>
+          <span>&#8377;180</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item main">
+          <img src="/photes/menu/biryani.jpeg" alt="Biryani" />
+          <h3>Biryani</h3>
+          <p>Fragrant rice mixed with spiced meat or vegetables.</p>
+          <span>&#8377;350</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item main">
+          <img src="/photes/menu/Rogan.jpeg" alt="Rogan Josh" />
+          <h3>Rogan Josh</h3>
+          <p>Lamb cooked in a flavorful sauce of spices and yogurt.</p>
+          <span>&#8377;400</span>
+          <button>Add to Cart</button>
+        </div>
+        <!-- Desserts -->
+        <div class="menu-item desserts">
+          <img src="/photes/img/dessert.png" alt="Chocolate Cake" />
+          <h3>Chocolate Cake</h3>
+          <p>Rich and moist chocolate cake with fudge frosting.</p>
+          <span>&#8377;150</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item desserts">
+          <img src="/photes/menu/Gulab Jamun.jpeg" alt="Gulab Jamun" />
+          <h3>Gulab Jamun</h3>
+          <p>Deep-fried dough balls soaked in sugary syrup.</p>
+          <span>&#8377;100</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item desserts">
+          <img src="/photes/menu/rasmalai.jpeg" alt="Ras Malai" />
+          <h3>Ras Malai</h3>
+          <p>Soft cheese dumplings in creamy milk syrup.</p>
+          <span>&#8377;120</span>
+          <button>Add to Cart</button>
+        </div>
+        <div class="menu-item desserts">
+          <img src="/photes/menu/Kheer.jpeg" alt="Kheer" />
+          <h3>Kheer</h3>
+          <p>Rice pudding flavored with cardamom and saffron.</p>
+          <span>&#8377;90</span>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function filterMenu(category) {
+        const items = document.querySelectorAll(".menu-item");
+        items.forEach((item) => {
+          if (category === "all" || item.classList.contains(category)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+        document.querySelectorAll(".filter-btn").forEach((btn) => btn.classList.remove("active"));
+        document.querySelector(`[onclick="filterMenu('${category}')"]`).classList.add("active");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Ordering Website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      #chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #e74c3c;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+      }
+
+      #chat-icon i {
+        color: white;
+        font-size: 24px;
+      }
+
+      #chatbox {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        display: none;
+        flex-direction: column;
+        z-index: 1000;
+      }
+
+      #chat-header {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+        cursor: pointer;
+      }
+
+      #chat-body {
+        padding: 10px;
+        height: 300px;
+        overflow-y: auto;
+        background-color: #f1f1f1;
+      }
+
+      #chat-footer {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      #chat-input {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      #chat-send {
+        margin-left: 10px;
+        padding: 8px 15px;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #chat-send:hover {
+        background-color: #c0392b;
+      }
+
+      .message {
+        margin: 10px 0;
+        padding: 10px;m
+        border-radius: 10px;
+        color: white;
+        max-width: 70%;
+      }
+
+      .user-message {
+        background-color: #3498db;
+        align-self: flex-end;
+      }
+
+      .bot-message {
+        background-color: #2ecc71;
+        align-self: flex-start;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <img
+        width="60px"
+        height="60px"
+        src="/photes/img/Logo.jpeg"
+        class="logo"
+        alt="Logo"
+      />
+      <nav>
+        <ul id="navbar">
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="/pages/menu.html">Menu</a></li>
+          <li><a href="/pages/offers.html">Offers</a></li>
+          <li><a href="/pages/order.html">Order Now</a></li>
+          <li><a href="/pages/profile.html">Profile</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero">
+        <h4>Delicious & Fresh</h4>
+        <h2>Exclusive Deals on Meals</h2>
+        <h1>Your Favorite Food Delivered Fast</h1>
+        <p>Get discounts up to 50% on your first order!</p>
+        <button>Order Now</button>
+      </section>
+
+      <section id="feature" class="section-p1">
+        <div class="fe-box">
+          <img
+            src="/photes/img/Delivery.jpeg"
+            width="64"
+            height="84"
+            alt="Free Delivery Icon"
+          />
+          <h6>Free Delivery</h6>
+        </div>
+        <div class="fe-box">
+          <img
+            src="/photes/img/Order.jpeg"
+            width="64"
+            height="84"
+            alt="Online Order Icon"
+          />
+          <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+          <img
+            src="/photes/img/Money.jpeg"
+            width="64"
+            height="84"
+            alt="Save Money Icon"
+          />
+          <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+          <img
+            src="/photes/img/Promotions.jpeg"
+            width="64"
+            height="84"
+            alt="Promotions Icon"
+          />
+          <h6>Exclusive Promotions</h6>
+        </div>
+        <div class="fe-box">
+          <img
+            src="/photes/img/Support.jpeg"
+            width="64"
+            height="84"
+            alt="Support Icon"
+          />
+          <h6>24/7 Support</h6>
+        </div>
+      </section>
+
+      <section id="product1" class="section-p1">
+        <h2>Featured Dishes</h2>
+        <p>Our Bestselling Meals</p>
+        <div class="pro-container">
+          <div class="pro">
+            <img
+              class="product-image"
+              src="/photes/img/burger.jpeg"
+              alt="Burger"
+            />
+            <div class="des">
+              <p>Cheesy Burger</p>
+              <h4>&#8377;150</h4>
+              <button>
+                <i
+                  class="fas fa-shopping-cart"
+                  aria-label="Add Cheesy Burger to cart"
+                ></i>
+              </button>
+            </div>
+          </div>
+          <div class="pro">
+            <img
+              class="product-image"
+              src="/photes/img/Pasta.jpeg"
+              alt="Pasta"
+            />
+            <div class="des">
+              <p>Pasta</p>
+              <h4>&#8377;150</h4>
+              <button>
+                <i
+                  class="fas fa-shopping-cart"
+                  aria-label="Add Pasta to cart"
+                ></i>
+              </button>
+            </div>
+          </div>
+          <div class="pro">
+            <img
+              class="product-image"
+              src="/photes/img/Pizza.jpeg"
+              alt="Pizza"
+            />
+            <div class="des">
+              <p>Pizza</p>
+              <h4>&#8377;150</h4>
+              <button>
+                <i
+                  class="fas fa-shopping-cart"
+                  aria-label="Add Pizza to cart"
+                ></i>
+              </button>
+            </div>
+          </div>
+          <div class="pro">
+            <img
+              class="product-image"
+              src="/photes/img/Salad.jpeg"
+              alt="Salad"
+            />
+            <div class="des">
+              <p>Salad</p>
+              <h4>&#8377;150</h4>
+              <button>
+                <i
+                  class="fas fa-shopping-cart"
+                  aria-label="Add Salad to cart"
+                ></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="banner" class="section-m1">
+        <h4>Special Discount</h4>
+        <h2>Up to <span>50% Off</span> on Selected Meals</h2>
+        <button class="normal">Discover More</button>
+      </section>
+    </main>
+
+    <footer id="footer" class="section-p1">
+      <div class="footer-box">
+        <h4>Food Ordering Website</h4>
+        <p>Order your favorite meals, anytime!</p>
+        <div class="social">
+          <a href="#" aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+    <div id="chat-icon" onclick="toggleChat()">
+      <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Chatbox -->
+    <div id="chatbox">
+      <div id="chat-header" onclick="toggleChat()">
+        <h4>Chat with Us</h4>
+      </div>
+      <div id="chat-body"></div>
+      <div id="chat-footer">
+        <input type="text" id="chat-input" placeholder="Type a message..." />
+        <button id="chat-send" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script>
+      // Toggle Chatbox
+      function toggleChat() {
+        const chatbox = document.getElementById("chatbox");
+        chatbox.style.display =
+          chatbox.style.display === "none" ? "flex" : "none";
+      }
+
+      // Send Message
+      function sendMessage() {
+        const input = document.getElementById("chat-input");
+        const message = input.value;
+        if (message.trim() !== "") {
+          appendMessage(message, "user");
+          input.value = "";
+          setTimeout(() => {
+            const botResponse = "Hi! How can I assist you today?";
+            appendMessage(botResponse, "bot");
+          }, 1000);
+        }
+      }
+
+      // Append Message
+      function appendMessage(message, sender) {
+        const chatBody = document.getElementById("chat-body");
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add(
+          "message",
+          sender === "user" ? "user-message" : "bot-message"
+        );
+        messageDiv.textContent = message;
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    </script>
+  </body>
+</html>
